@@ -1,30 +1,75 @@
 <MyGrid>:
 
-    name: name
+    numofattacks: numofattacks
     email: email
+    rerollH: rerollH
+    wounding: wounding
+    rerollW: rerollW
+    saves: saves
+    dmg: dmg
 
     GridLayout:
         cols:1
-        size: root.width - 200, root.height -200
-        pos: 100, 100
+        size: root.width - 50, root.height - 50
+        pos: 25, 25
 
         GridLayout:
             cols:2
 
             Label:
-                text: "Name: "
+                text: "Number of Attacks: "
 
             TextInput:
-                id: name
+                id: numofattacks
                 multiline:False
 
             Label:
-                text: "Email: "
+                text: "Hitting on: "
 
             TextInput:
                 id: email
                 multiline:False
 
+            Label:
+                text: "Reroll Hits (0 = none, 1 mean reroll 1's and 6 means all)"
+
+            TextInput:
+                id: rerollH
+                multiline:False
+
+            Label:
+                text: "Wounding on"
+
+            TextInput:
+                id: wounding
+                multiline:False
+
+            Label:
+                text: "reroll wounds (0 = none, 1 mean reroll 1's and 6 means all)"
+
+            TextInput:
+                id: rerollW
+                multiline:False
+
+            Label:
+                text: "Saving on"
+
+            TextInput:
+                id: saves
+                multiline:False
+
+            Label:
+                text: "Damage"
+
+            TextInput:
+                id: dmg
+                multiline:False
         Button:
             text:"Submit"
             on_press: root.btn()
+
+        Label:
+            id: finalanswer
+            text: "answer goes here"
+            font_size: 24
+
