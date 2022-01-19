@@ -9,13 +9,63 @@ from kivy.properties import ObjectProperty
 
 
 class MyGrid(Widget):
-    name = ObjectProperty(None)
+    numofattacks = ObjectProperty(None)
     email = ObjectProperty(None)
+    rerollH = ObjectProperty(None)
+    wounding = ObjectProperty(None)
+    rerollW = ObjectProperty(None)
+    Saves = ObjectProperty(None)
+    dmg = ObjectProperty(None)
 
     def btn(self):
-        print("Name:", self.name.text, "email:", self.email.text)
-        self.name.text = ""
+        print(self.numofattacks.text, self.email.text, self.rerollH.text, self.wounding.text, self.rerollW.text, self.saves.text, self.dmg.text)
+        attacks = float(self.numofattacks.text)
+        hitting = float(self.email.text)
+        attackreroll = float(self.rerollH.text)
+        wounding = float(self.wounding.text)
+        woundreroll = float(self.rerollW.text)
+        save = float(self.saves.text)
+        damage = float(self.dmg.text)
+        runningtotal = abs(7 - hitting)
+        runningtotal = runningtotal/6
+        runningtotal = runningtotal*attacks
+        print(runningtotal)
+        if attackreroll == 1:
+            i = attacks*(1/6)
+            n = abs(7 - hitting)
+            n = n/6
+            i = i*n
+            print(i)
+            runningtotal = runningtotal + i
+            print(runningtotal)
+
+        if attackreroll == 6:
+            misses = hitting - 1
+            misses = misses/6
+            numattackreroll = misses*attacks
+            i = abs(7 - hitting)
+            i = i/6
+            numattackreroll = numattackreroll*i
+            print(numattackreroll)
+            runningtotal = runningtotal + numattackreroll
+            print(runningtotal)
+
+        i = abs(7 - wounding)
+        i = i/6
+        runningtotal = runningtotal*i
+
+
+        self.ids.finalanswer.text = str(runningtotal)
+
+
+
+        self.numofattacks.text = ""
         self.email.text = ""
+        self.rerollH.text = ""
+        self.wounding.text = ""
+        self.rerollW.text = ""
+        self.saves.text = ""
+        self.dmg.text = ""
 
 
 
