@@ -55,6 +55,28 @@ class MyGrid(Widget):
         runningtotal = runningtotal*i
 
 
+        if woundreroll == 1:
+            n = abs(7 - hitting)
+            n = n / 6
+            i = attacks*n*(1/6) #number of attacks to hit and have a wound of 1
+            m = abs(7 - wounding)
+            m = m/6
+            resultofrerollingallonesonwounds = i*m
+            runningtotal = runningtotal + resultofrerollingallonesonwounds
+            #print("running total =")
+            #print(runningtotal)
+
+        #if woundreroll == 6:
+            #do stuff here
+
+        n = abs(7- save)
+        n = n/6
+        n = 1-n
+        print(n)
+        runningtotal = runningtotal*n
+
+        runningtotal = runningtotal*damage
+
         self.ids.finalanswer.text = str(runningtotal)
 
 
